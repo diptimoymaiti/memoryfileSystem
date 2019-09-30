@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -75,6 +76,11 @@ public class FileSystemTest {
 		String path =  fileSystem.cd("d/b");
 		boolean del = fileSystem.rm("c", true);
 		assertTrue(del);;
+		
+	}
+	@AfterClass
+	public void close() {
+		fileSystem = null;
 		
 	}
 
