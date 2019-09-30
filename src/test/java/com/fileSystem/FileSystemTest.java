@@ -32,6 +32,13 @@ public class FileSystemTest {
 	}
 	
 	@Test
+	public void testMkdirInvalidPath() {
+		boolean status = fileSystem.mkdir("ab//c");
+		assertFalse(status);
+		//fail("Not yet implemented");
+	}
+	
+	@Test
 	public void testCd() {
 		boolean status = fileSystem.mkdir("c/b/c/");
 		assertTrue(status);
@@ -47,6 +54,17 @@ public class FileSystemTest {
 		String path =  fileSystem.cd("d/b");
 		String pwd = fileSystem.pwd();
 		assertEquals("/d/b", pwd);
+		
+	}
+	
+	@Test
+	public void testTouch() {
+		boolean status = fileSystem.mkdir("test");
+		assertTrue(status);
+		fileSystem.cd("test");
+		String path =  fileSystem.touch("a.txt");
+		
+		assertEquals("/test/a.txt", path);
 		
 	}
 	
